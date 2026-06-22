@@ -36,7 +36,7 @@ Repository = "https://github.com/SvyatoslavMikhailov/intelbit-river-connector-bi
 
 [tool.uv.sources]
 intelbit-bitrix24-client = { path = "../intelbit-bitrix24-client", editable = true }
-intelbit-river-sdk = { path = "../intelbit-river-monorepo/packages/sdk", editable = true }
+intelbit-river-sdk = { git = "https://github.com/SvyatoslavMikhailov/intelbit-river-sdk", tag = "v0.1.0" }
 
 [tool.ruff]
 line-length = 100

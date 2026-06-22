@@ -12,18 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Коннектор зависит от соседних репо по path; для CI их нужно подложить рядом.
+          # intelbit-bitrix24-client подключается по path → кладём рядом.
+          # river-sdk берётся из публичного git-тега, приватный монорепо не нужен.
           path: intelbit-river-connector-bitrix24
 
       - uses: actions/checkout@v4
         with:
           repository: SvyatoslavMikhailov/intelbit-bitrix24-client
           path: intelbit-bitrix24-client
-
-      - uses: actions/checkout@v4
-        with:
-          repository: SvyatoslavMikhailov/intelbit-river-monorepo
-          path: intelbit-river-monorepo
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
