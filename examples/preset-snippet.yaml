@@ -1,0 +1,21 @@
+# Фрагмент preset.yaml с коннектором Bitrix24 (ADR-005, формат v1).
+# Бизнес-маппинги направлений (b24-sap / crm-onec) — здесь, не в коннекторе.
+
+connectors:
+  bitrix24:
+    plugin: intelbit.river.connector.bitrix24
+    config:
+      webhook_base_url: "${BITRIX_WEBHOOK_URL}"
+      iblock_id: 14
+      price_type_id: 1
+      rate_limit_rps: 2
+      event_secret: "${BITRIX_EVENT_TOKEN}"
+
+# Пример направления: контрагенты Bitrix24 → SAP (дедуп по ИНН/КПП — в маппинге пресета).
+flows:
+  - name: companies-b24-to-sap
+    source:
+      connector: bitrix24
+      entity: company
+    schedule: "*/15 * * * *"   # каталог/остатки/контрагенты — pull по расписанию
+    # mapping: ...             # стандартные поля + ИНН/КПП → поля SAP (вне ядра коннектора)

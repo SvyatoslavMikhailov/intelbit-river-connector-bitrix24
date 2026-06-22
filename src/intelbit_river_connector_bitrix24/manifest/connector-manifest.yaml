@@ -1,0 +1,32 @@
+---
+id: intelbit.river.connector.bitrix24
+version: 0.1.0
+api_version: "1"
+plugin_type: connector
+name: Bitrix24 Connector
+description: >-
+  Коннектор Bitrix24 (коробка) для Интелбит:Река — обмен по REST со
+  стандартными полями четырёх доменов: контрагенты, материалы и цены,
+  складские остатки, сделки.
+author: ООО Интелбит
+license: Apache-2.0
+systems:
+  - bitrix24-box
+capabilities:
+  - read
+  - write
+  - subscribe
+entities:
+  - company
+  - requisite
+  - product
+  - price
+  - store
+  - store_product
+  - deal
+  - deal_productrows
+config_schema_path: ../config_schema.json
+entrypoint:
+  type: python
+  module: intelbit_river_connector_bitrix24.connector
+  class: Bitrix24Connector

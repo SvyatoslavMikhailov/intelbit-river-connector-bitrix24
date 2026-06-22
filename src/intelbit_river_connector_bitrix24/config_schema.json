@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intelbit.studio/river/connector-bitrix24/config.schema.json",
+  "title": "Bitrix24 Connector config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["webhook_base_url"],
+  "properties": {
+    "webhook_base_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL входящего вебхука коробки: https://<portal>/rest/<user_id>/<token>/"
+    },
+    "iblock_id": {
+      "type": "integer",
+      "description": "ID инфоблока торгового каталога (для catalog.*)"
+    },
+    "price_type_id": {
+      "type": "integer",
+      "description": "ID типа цены (catalog.priceType) для чтения/записи цен"
+    },
+    "rate_limit_rps": {
+      "type": "number",
+      "default": 2,
+      "minimum": 0.1,
+      "description": "Лимит запросов в секунду к REST Bitrix24"
+    },
+    "timeout": {
+      "type": "number",
+      "default": 30,
+      "description": "Таймаут HTTP-запроса, сек"
+    },
+    "event_secret": {
+      "type": "string",
+      "description": "Опциональный secret для проверки исходящих вебхуков (application token)"
+    }
+  }
+}
